@@ -2,13 +2,9 @@ const express = require('express');
 
 const handleUSSDRequest = (req, res) => {
   let { sessionId, serviceCode, phoneNumber, text } = req.body;
-
-  // Trim inputs to avoid whitespace issues
   serviceCode = serviceCode.trim();
   text = text.trim();
-
-  console.log('📥 Incoming USSD Request:', req.body);
-
+  console.log(' Incoming USSD Request:', req.body);
   let response = '';
   const textArray = text === '' ? [] : text.split('*');
 
@@ -30,7 +26,7 @@ const handleUSSDRequest = (req, res) => {
     response = `END Invalid input. Please try again.`;
   }
 
-  console.log('📤 USSD Response:', response);
+  console.log('USSD Response:', response);
 
   res.set('Content-Type', 'text/plain');
   res.send(response);
