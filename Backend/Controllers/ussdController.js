@@ -9,6 +9,7 @@ const handleUSSDRequest = (req, res) => {
     const textArray = text.split('*');
   
     if (text === '') {
+        console.log('📥 Incoming USSD Request:', req.body);
       // This is the first request. Show the main menu
       response = `CON Welcome to MyService
   1. Check Balance
@@ -17,6 +18,7 @@ const handleUSSDRequest = (req, res) => {
     } else if (text === '1') {
       // User selected "Check Balance"
       response = `END Your balance is KES 500`;
+      
     } else if (text === '2') {
       // User selected "Buy Airtime"
       response = `CON Enter amount to buy:`;
